@@ -82,7 +82,7 @@
             echo "<br>";
 
 
-            $sql = "SELECT nome, data_nascimento AS autor_antigo FROM tb_autor ORDER BY data_nascimento ASC limit 1 ";
+            $sql = "SELECT nome AS autor_antigo FROM tb_autor ORDER BY data_nascimento ASC limit 1 ";
             $comando = mysqli_prepare($conexao, $sql);
             mysqli_stmt_execute($comando);
             $resultados = mysqli_stmt_get_result($comando);
@@ -106,6 +106,7 @@
             }
 
             echo"autor mais novo: $resu";
+
         ?>
     </p>    
     <p> 
@@ -141,18 +142,43 @@
             echo "<br>";
 
 
-            $sql = "SELECT nome AS livro_antigo FROM tb_livro ORDER BY ano DESC limit 1 ";
+            $sql = "SELECT nome AS livro_novo FROM tb_livro ORDER BY ano DESC limit 1 ";
             $comando = mysqli_prepare($conexao, $sql);
             mysqli_stmt_execute($comando);
             $resultados = mysqli_stmt_get_result($comando);
 
             while ($comando = mysqli_fetch_assoc($resultados)) {
-                $resu = $comando['livro_antigo'];
+                $resu = $comando['livro_novo'];
             }
 
             echo"Livro mais novo: $resu";
 
-            echo "aqui";
+            echo "<br>";
+
+
+            $sql = "SELECT
+                        a.nome,
+                        COUNT(l.id_livro) AS quantidade_de_livros
+                    FROM
+                        tb_autor AS a
+                    JOIN
+                        tb_livro AS l ON a.id_autor = l.id_autor
+                    GROUP BY
+                        a.id_autor, a.nome
+                    ORDER BY
+                        quantidade_de_livros DESC
+                    LIMIT 1; ";
+            $comando = mysqli_prepare($conexao, $sql);
+            mysqli_stmt_execute($comando);
+            $resultados = mysqli_stmt_get_result($comando);
+
+            while ($comando = mysqli_fetch_assoc($resultados)) {
+                $resu = $comando['nome'];
+                
+            }
+
+            echo"Autor com mais livros: $resu";
+
 
             echo "<br>";
 
