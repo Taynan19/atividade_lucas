@@ -20,7 +20,7 @@
         require_once "conexao.php";
 
         // SELECT * FROM tb_livro;
-        $sql = "SELECT id_livro, tb_autor.nome AS nome_autor, genero, ano, foto, tb_autor.nome AS nome_autor FROM tb_livro INNER JOIN tb_autor ON tb_livro.id_autor = tb_autor.id_autor;";
+        $sql = "SELECT id_livro, tb_livro.nome AS nome_livro, genero, ano, foto, tb_autor.nome AS nome_autor FROM tb_livro INNER JOIN tb_autor ON tb_livro.id_autor = tb_autor.id_autor;";
         $comando = mysqli_prepare($conexao, $sql);
 
         mysqli_stmt_execute($comando);
