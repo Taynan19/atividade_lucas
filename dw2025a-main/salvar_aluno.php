@@ -15,7 +15,7 @@
     // letra i -> int
     // letra d -> float, decimal
     mysqli_stmt_bind_param($comando, 'sssss', $nome, $matricula, $curso, $turma, $data);
-
+    
     mysqli_stmt_execute($comando);
 
     mysqli_stmt_close($comando);

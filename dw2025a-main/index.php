@@ -82,7 +82,7 @@
             echo "<br>";
 
 
-            $sql = "SELECT nome AS autor_antigo FROM tb_autor ORDER BY data_nascimento ASC limit 1 ";
+            $sql = "SELECT nome, data_nascimento AS autor_antigo FROM tb_autor ORDER BY data_nascimento ASC limit 1 ";
             $comando = mysqli_prepare($conexao, $sql);
             mysqli_stmt_execute($comando);
             $resultados = mysqli_stmt_get_result($comando);
@@ -91,7 +91,7 @@
                 $resu = $comando['autor_antigo'];
             }
 
-            echo"Autor mais antigo: $resu";
+            echo"Autor mais antigo: $resu"; 
 
             echo "<br>";
 

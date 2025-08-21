@@ -10,6 +10,8 @@
     <?php
     require_once  "conexao.php";
 
+
+
     $sql = "SELECT * FROM tb_livro";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_execute($comando);
@@ -33,7 +35,7 @@
     echo "<td>ID</td>";
     echo "<td>Nome</td>";
     echo "<td>Data de nascimento</td>";
-    echo "<td>Nacionalidade</td>";
+    echo "<td>Nacionalidade</td>"; 
     echo "</tr>";
     }
     
