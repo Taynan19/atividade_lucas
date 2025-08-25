@@ -20,7 +20,7 @@
         require_once "conexao.php";
 
         // SELECT * FROM tb_livro;
-        $sql = "SELECT id_livro, tb_autor.nome AS nome_autor, genero, ano, foto, tb_autor.nome AS nome_autor FROM tb_livro INNER JOIN tb_autor ON tb_livro.id_autor = tb_autor.id_autor;";
+        $sql = "SELECT id_autor, nome, data_nascimento, nacionalidade FROM tb_autor";
         $comando = mysqli_prepare($conexao, $sql);
 
         mysqli_stmt_execute($comando);
@@ -33,32 +33,26 @@
         echo "<table border='1'>";
         echo "<tr>";
         echo "<td>ID</td>";
-        echo "<td>Foto</td>";
         echo "<td>Nome</td>";
-        echo "<td>Autor</td>";
-        echo "<td>Gênero</td>";
-        echo "<td>Ano</td>";
+        echo "<td>Data nascimento</td>";
+        echo "<td>Nascionalidade</td>";
         echo "<td>AÇÃO</td>";
         echo "</tr>";
-        while ($livro = mysqli_fetch_assoc($resultados)) {
-            $id_livro = $livro['id_livro'];
-            $nome = $livro['nome_livro'];
-            $genero = $livro['genero'];
-            $ano = $livro['ano'];
-            $foto = $livro['foto'];
-            $autor = $livro['nome_autor'];
+        while ($autor = mysqli_fetch_assoc($resultados)) {
+            $id_autor = $autor['id_autor'];
+            $nome = $autor['nome'];
+            $data = $autor['data_nascimento'];
+            $nascionalidade = $autor['nacionalidade'];
 
                        
             // echo "$id_livro - $nome<br>";
 
             echo "<tr>";
-            echo "<td>$id_livro</td>";
-            echo "<td><img src='fotos/$foto'></td>";
+            echo "<td>$id_autor</td>";
             echo "<td>$nome</td>";
-            echo "<td>$autor</td>";
-            echo "<td>$genero</td>";
-            echo "<td>$ano</td>";
-            echo "<td><a href='deletar_livro.php?id=$id_livro'><img src='delete-button.png'></a></td>";
+            echo "<td>$data</td>";
+            echo "<td>$nascionalidade</td>";
+            echo "<td><a href='deletar_autor.php?id=$id_autor'><img src='delete-button.png'></a></td>";
             echo "</tr>";
 
 

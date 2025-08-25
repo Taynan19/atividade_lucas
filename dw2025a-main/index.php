@@ -16,8 +16,8 @@
     <hr>
 
     <a href="listar_livros.php">Lista de Livros</a> <br>
-    <a href="listar_livros_2.php">Lista de Livros (cartões)</a>
-    <a href="listar_aluno.php">Lista de Alunod</a> <br>
+    <a href="listar_livros_2.php">Lista de Livros (cartões)</a> <br>
+    <a href="listar_aluno.php">Lista de Aluno</a> <br>
     <a href="listar_autor.php">Lista de Autores</a> <br>
     <a href="listar_emprestimo.php">Lista de Emprestimos</a> <br>
 
